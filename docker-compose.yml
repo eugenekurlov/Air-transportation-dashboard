@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: mydb
+    image: postgres:latest
+    restart: on-failure
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwerty
+    volumes:
+      # copy the sql script to create tables which will be drop firstly
+      - ./migrations/01_create_db_if_not_exist.sql:/docker-entrypoint-initdb.d/01_create_db_if_not_exist.sql
+      # copy the sql script to fill tables
+      - ./migrations/02_demo_big_20170815.sql:/docker-entrypoint-initdb.d/02_demo_big_20170815.sql
+      - ./migrations/03_set_language.sql:/docker-entrypoint-initdb.d/03_set_language.sql
+      # create own materialized view
+      - ./migrations/03_set_language.sql:/docker-entrypoint-initdb.d/04_views.sql
+    ports:
+      - 5438:5432
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  superset:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mysuperset
+    environment:
+      - ADMIN_USERNAME=admin
+      - ADMIN_EMAIL=admin@superset.com
+      - ADMIN_PASSWORD=admin_pas
+    ports:
+      - '80:8088'
+    depends_on:
+      - db
