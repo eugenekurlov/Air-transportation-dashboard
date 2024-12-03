@@ -1,0 +1,9 @@
+SELECT passenger_name, total_fights, total_revenue
+FROM (
+  SELECT passenger_id, passenger_name, COUNT(amount) AS total_fights, SUM(amount) AS total_revenue
+  FROM tickets
+    JOIN ticket_flights USING(ticket_no)
+  GROUP BY 1, 2
+) t
+ORDER BY 2 DESC, 3 DESC, split_part(passenger_name, ' ', 2)
+LIMIT 10

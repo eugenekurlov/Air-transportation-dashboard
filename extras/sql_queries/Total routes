@@ -1,0 +1,12 @@
+SELECT 
+  COUNT(city_1) AS total_routes FROM (
+     
+    SELECT 
+      LEAST(departure_city, arrival_city) AS city_1, 
+      GREATEST(departure_city, arrival_city) AS city_2 
+    FROM 
+      flights_v 
+    GROUP BY 
+      1, 
+      2
+  ) total_routes

@@ -1,3 +1,0 @@
-Connect this database with SQLAlchemy URL string instead:
-postgresql://postgres:qwerty@172.17.0.1:5438/demo
-link to explanations https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/

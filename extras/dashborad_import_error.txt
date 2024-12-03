@@ -1,0 +1,60 @@
+superset.commands.exceptions.CommandInvalidError: Error importing dashboard
+
+2024-12-03 03:19:32,424:WARNING:superset.views.base:CommandException
+
+Traceback (most recent call last):
+
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1823, in full_dispatch_request
+
+    rv = self.dispatch_request()
+
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1799, in dispatch_request
+
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+
+  File "/usr/local/lib/python3.9/site-packages/flask_appbuilder/security/decorators.py", line 95, in wraps
+
+    return f(self, *args, **kwargs)
+
+  File "/app/superset/views/base_api.py", line 127, in wraps
+
+    raise ex
+
+  File "/app/superset/views/base_api.py", line 121, in wraps
+
+    duration, response = time_function(f, self, *args, **kwargs)
+
+  File "/app/superset/utils/core.py", line 1526, in time_function
+
+    response = func(*args, **kwargs)
+
+  File "/app/superset/utils/log.py", line 255, in wrapper
+
+    value = f(*args, **kwargs)
+
+  File "/app/superset/views/base_api.py", line 108, in wraps
+
+    return f(self, *args, **kwargs)
+
+  File "/app/superset/dashboards/api.py", line 1199, in import_
+
+    command.run()
+
+  File "/app/superset/dashboards/commands/importers/dispatcher.py", line 64, in run
+
+    raise exc
+
+  File "/app/superset/dashboards/commands/importers/dispatcher.py", line 57, in run
+
+    command.run()
+
+  File "/app/superset/commands/importers/v1/__init__.py", line 73, in run
+
+    self.validate()
+
+  File "/app/superset/commands/importers/v1/__init__.py", line 111, in validate
+
+    raise CommandInvalidError(
+
+superset.commands.exceptions.CommandInvalidError: Error importing dashboard
+

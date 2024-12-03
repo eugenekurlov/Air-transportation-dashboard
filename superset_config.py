@@ -4,6 +4,7 @@
 # Use a strong complex alphanumeric string and use a tool to help you generate 
 # a sufficiently random sequence
 
+from datetime import timedelta
 FEATURE_FLAGS = {
 	    "ENABLE_TEMPLATE_PROCESSING": True,
 	    "ALLOW_ADHOC_SUBQUERY": True

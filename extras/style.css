@@ -1,0 +1,44 @@
+.dashboard-component{ 
+  border: solid #32a1ce;
+}
+
+.dashboard-markdown .dashboard-component-chart-holder { 
+  background: #edf5f7;
+}
+
+.superset-legacy-chart-big-number.css-88jycr.no-trendline .header-line {
+  width: 100%;
+  text-align: center;
+}
+
+.superset-legacy-chart-big-number.no-trendline .subheader-line {
+  width: 100%;
+  text-align: center;
+}
+
+.ant-tabs-nav > div:nth-of-type(1) {
+  display: unset !important;
+  width: 100% !important;
+}
+
+
+div[id="TABS-WnA5SyA5c8"] .header-title{
+  visibility: hidden;
+}
+
+div[data-test-chart-id="3"] { 
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+div[data-test-chart-id="15"] .header-title{
+  visibility: hidden;
+}
+
+.parcoords.grid .header :not(:first-child) {
+  display: none;
+}
+
+.parcoords.grid .row :not(:first-child) {
+  display: none;
+}

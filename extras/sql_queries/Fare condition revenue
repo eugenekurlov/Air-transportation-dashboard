@@ -1,0 +1,10 @@
+SELECT 
+  DATE_TRUNC('month', scheduled_departure):: DATE AS month, 
+  fare_conditions, 
+  SUM(amount) 
+FROM 
+  ticket_flights 
+  LEFT JOIN flights USING(flight_id) 
+GROUP BY 
+  DATE_TRUNC('month', scheduled_departure), 
+  fare_conditions

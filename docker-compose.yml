@@ -15,7 +15,7 @@ services:
       - ./migrations/02_demo_big_20170815.sql:/docker-entrypoint-initdb.d/02_demo_big_20170815.sql
       - ./migrations/03_set_language.sql:/docker-entrypoint-initdb.d/03_set_language.sql
       # create own materialized view
-      - ./migrations/03_set_language.sql:/docker-entrypoint-initdb.d/04_views.sql
+      - ./migrations/04_views.sql:/docker-entrypoint-initdb.d/04_views.sql
     ports:
       - 5438:5432
 

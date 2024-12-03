@@ -1,3 +1,8 @@
+\c demo;
+SET search_path = bookings;
+
+SELECT CURRENT_SCHEMA, CURRENT_SCHEMA();
+
 CREATE MATERIALIZED VIEW customers_info AS
   WITH flight_dates AS (
     SELECT MIN(scheduled_departure) AS start, MAX(scheduled_departure) AS finish
@@ -29,7 +34,7 @@ CREATE MATERIALIZED VIEW profitable_routes AS
   LIMIT 5;
 
 CREATE UNIQUE INDEX route
-  ON profitable_routes (city_1, city_2);
+  ON bookings.profitable_routes (city_1, city_2);
   
 CREATE MATERIALIZED VIEW aircrafts_summary AS
   SELECT total_flights.model

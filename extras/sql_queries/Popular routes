@@ -1,0 +1,13 @@
+SELECT city_1
+      , city_2
+      , flights_amount
+      , flights_amount * 100.0 / SUM(flights_amount) OVER () AS flights_percentage
+FROM (
+  SELECT LEAST(departure_city, arrival_city) AS city_1
+          , GREATEST(departure_city, arrival_city) AS city_2
+          , COUNT(departure_city) AS flights_amount
+  FROM flights_v
+  GROUP BY 1,2
+) amount
+ORDER BY 4 DESC
+LIMIT 5
